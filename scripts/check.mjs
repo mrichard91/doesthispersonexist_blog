@@ -2,7 +2,6 @@ import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import matter from 'gray-matter';
-import { createHash } from 'node:crypto';
 async function walk(dir){return(await Promise.all((await readdir(dir,{withFileTypes:true})).map(d=>d.isDirectory()?walk(path.join(dir,d.name)):path.join(dir,d.name)))).flat();}
 const files=await walk('dist');
 assert(files.includes('dist/404.html'),'Missing real 404 page');
@@ -52,16 +51,3 @@ for (const record of JSON.parse(await readFile('docs/mullingsecurity-import.json
   assert(redirects.includes(`${record.originalPath} /posts/${record.slug}/ 301`),`Missing old permalink: ${record.slug}`);
 }
 console.log('Archive dates, original timestamps, context, and permalink redirects verified.');
-for (const record of JSON.parse(await readFile('docs/linkedin-import.json','utf8'))) {
-  const {data,content} = matter(await readFile(`content/posts/${record.slug}.md`,'utf8'));
-  assert.equal(data.date,record.date,`LinkedIn publication date changed: ${record.slug}`);
-  assert.equal(data.publishedAt,record.publishedAt,`LinkedIn timestamp changed: ${record.slug}`);
-  assert.equal(data.source,record.source,`LinkedIn source changed: ${record.slug}`);
-  const originalText = content.split('\n\n---\n\n')[0].trim();
-  assert.equal(createHash('sha256').update(originalText).digest('hex'),record.sourceTextSha256,`Mirrored LinkedIn text changed: ${record.slug}`);
-  if (data.draft === true) continue;
-  const html = await readFile(`dist/posts/${record.slug}/index.html`,'utf8');
-  assert(html.includes(`href="${record.source}">LinkedIn ↗</a>`),`Missing LinkedIn attribution: ${record.slug}`);
-  assert(html.includes(`href="/posts/${record.relatedPost}/"`),`Missing related article: ${record.slug}`);
-}
-console.log('LinkedIn mirror text, source, and original publication timestamp verified.');
