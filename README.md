@@ -1,6 +1,6 @@
 # blog.doesthispersonexist.com
 
-Matt Richard’s static blog. Markdown in Git, generated HTML on Cloudflare Pages. No server code, database, external fonts, or browser requests to Medium. Cloudflare Pages adds its cookie-free Web Analytics beacon. The site’s own browser JavaScript handles search and the light/dark theme; all posts and category pages work without it.
+Matt Richard’s static blog. Markdown in Git, generated HTML on Cloudflare Pages. No server code, database, external fonts, or browser requests to Medium. Cloudflare adds its cookie-free Web Analytics beacon at the domain edge. The site’s own browser JavaScript handles search and the light/dark theme; all posts and category pages work without it.
 
 ## Write and publish
 
