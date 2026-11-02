@@ -1,12 +1,13 @@
 ---
-title: "How accurate are IHME models in Sweden?"
-date: "2020-06-07"
-description: "Examining Sweden’s COVID-19 data and the accuracy of early IHME projections."
+title: How accurate are IHME models in Sweden?
+date: '2020-06-07'
+description: Examining Sweden’s COVID-19 data and the accuracy of early IHME projections.
 category: analysis
-tags: ["analysis"]
-source: "https://medium.com/@mrichard91/how-accurate-are-ihme-models-in-sweden-fd4363c5c08d"
+tags:
+  - analysis
+source: >-
+  https://medium.com/@mrichard91/how-accurate-are-ihme-models-in-sweden-fd4363c5c08d
 ---
-
 I recently read the article “How Fear, Groupthink Drove Unnecessary Global Lockdowns” by [Yinon Weiss](https://medium.com/u/c3935a1ea208) [published on realclearpolitic.com](https://www.realclearpolitics.com/articles/2020/05/21/how_fear_groupthink_drove_unnecessary_global_lockdowns_143253.html). I am writing this as my attempt to examine specific claims in the article using publicly available data files from IHME. I wrote a Jupyter Notebook in python to recreate the chart in question using IHME data, analyzed trends in the models accuracy and highlight issues specific to Sweden that do not appear to apply to other locales. My notebook and code is available on [github here](https://github.com/mrichard91/ihme_model_notebook/blob/master/IHME%20regression.ipynb).
 
 Part of Mr. Weiss’s claim that COVID-19 lockdowns were unnecessary is the use of modeling data to make decisions. He is not the first to make a critique of IHME methods, including a [study in Annals of Internal Medicine](https://www.acpjournals.org/doi/full/10.7326/M20-1565). In the article he specifically calls out the IHME model for Sweden as being inaccurate, over predicting deaths and detrimental to decision making.

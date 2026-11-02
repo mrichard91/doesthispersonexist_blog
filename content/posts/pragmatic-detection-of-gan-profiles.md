@@ -1,12 +1,16 @@
 ---
-title: "Pragmatic Detection of GAN Profiles"
-date: "2022-02-20"
-description: "Practical techniques for identifying synthetic profile photos, with examples and limitations."
+title: Pragmatic Detection of GAN Profiles
+date: '2022-02-20'
+description: >-
+  Practical techniques for identifying synthetic profile photos, with examples
+  and limitations.
 category: security
-tags: ["threat-intelligence","synthetic-identities"]
-source: "https://medium.com/@mrichard91/pragmatic-detection-of-gan-profiles-f5d7389e40bc"
+tags:
+  - threat-intelligence
+  - synthetic-identities
+source: >-
+  https://medium.com/@mrichard91/pragmatic-detection-of-gan-profiles-f5d7389e40bc
 ---
-
 In a [previous article](https://medium.com/@mrichard91/linkedin-gan-network-analysis-de55a0b6526e) I discussed a network of LinkedIn profiles that appear to be leveraging GAN generated photos for their profiles. In this article I will present a pragmatic method for analyzing and detecting GAN profile photos using artifacts from StyleGAN2. This is not a generalized detection method, rather a specific use case for a specific type of abuse. This is akin to detecting one specific family of malicious code rather than trying to detect all malicious code. The notebook I used is available [here.](https://gist.github.com/mrichard91/ca2819175bcf717f1e60707ca6125e59)
 
 ![](/media/medium/438fb97d9dbbf12a.png)
@@ -31,31 +35,41 @@ How can we be sure that stylegan2 produces the exact symmetry and locations seen
 
 We can further confirm this by looking at the distribution of values for our detected eyes in 1,000 stylegan2 generated photos. In this code snippet I generate 1,000 random faces, get the coordinates of the eyes using Dlib 68 point facial monument detection and look at the distribution of those points. The standard deviation (in pixels) for each point is less than 2px!
 
-num\_imgs = 1000  
-batch\_size = 10  
-rnd = np.random.RandomState(1)  
-z = rnd.randn(num\_imgs,512)  
-imgs = \[\]  
-for b in np.split(z, num\_imgs // batch\_size):  
-    images = Gs.run(b, None, \*\*Gs\_kwargs)  
-    imgs += \[  
-       Image.fromarray(image).resize((results\_size, results\_size))   
-       for image in images  
-    \]
+```
+num_imgs = 1000
+batch_size = 10
+rnd = np.random.RandomState(1)
+z = rnd.randn(num_imgs,512)
+imgs = []
+for b in np.split(z, num_imgs // batch_size):
+    images = Gs.run(b, None, **Gs_kwargs)
+    imgs += [
+       Image.fromarray(image).resize((results_size, results_size)) 
+       for image in images
+    ]
+```
 
-eyes = np.array(\[get\_eyes(x) for x in imgs\])  
-flat\_pts = eyes.reshape(eyes.shape\[0\], eyes.shape\[1\]\*eyes.shape\[2\])  
-flat\_pts.std(axis=0)
+```
+eyes = np.array([get_eyes(x) for x in imgs])
+flat_pts = eyes.reshape(eyes.shape[0], eyes.shape[1]*eyes.shape[2])
+flat_pts.std(axis=0)
+```
 
-\> array(\[1.70608294, 1.23875381, 1.22704482, 1.39556404, 1.32981202       1.26775352, 1.2130948 , 1.35359928, 1.20066648, 1.40046278,       1.30262466, 1.29201819, 1.18665538, 1.30560293, 1.31577506,       1.28433485, 1.21646003, 1.39095327, 1.82577545, 1.35985146,       1.38073567, 1.1874001 , 1.24641847, 1.3204166 \]),
+```
+> array([1.70608294, 1.23875381, 1.22704482, 1.39556404, 1.32981202       1.26775352, 1.2130948 , 1.35359928, 1.20066648, 1.40046278,       1.30262466, 1.29201819, 1.18665538, 1.30560293, 1.31577506,       1.28433485, 1.21646003, 1.39095327, 1.82577545, 1.35985146,       1.38073567, 1.1874001 , 1.24641847, 1.3204166 ]),
+```
 
 Now for the detection part — if we want to know how close an image is to StyleGAN2 we can detect the eyes and measure the distance between the average GAN face and the current face. To get the distance between all the points from the mean, we can use the sklearn pairwise\_distance function, which computes the Euclidean distance. Running this on our GAN photos shows the mean distance is about 6px with a standard deviation of 3. Images with a distance between 0–12 are good candidates for being GAN generated or machine aligned.
 
-\# compute the distances between all of the points and the mean point  
-mean\_eyes = flat\_pts.mean(axis=0).reshape(12, 2)  
-pairwise\_distances(mean\_eyes.reshape(1,24), flat\_pts\[:100\])
+```
+# compute the distances between all of the points and the mean point
+mean_eyes = flat_pts.mean(axis=0).reshape(12, 2)
+pairwise_distances(mean_eyes.reshape(1,24), flat_pts[:100])
+```
 
-array(\[\[ 5.65304767,  5.45627602,  3.88290458,  5.36758307,  8.08609597        10.08389548,  5.13331745,  5.18699798,  6.96856858,  5.73174912,         3.15324404,  4.27632412,  3.26357902,  6.49268419,  8.80562025,
+```
+array([[ 5.65304767,  5.45627602,  3.88290458,  5.36758307,  8.08609597        10.08389548,  5.13331745,  5.18699798,  6.96856858,  5.73174912,         3.15324404,  4.27632412,  3.26357902,  6.49268419,  8.80562025,
+```
 
 At this point, it seems like finding the eyes and getting the distance from StyleGAN2 is a possible way to do detection, but what about false positives? Is it possible someone just happens to crop their photo just right? We certainly expect aligned photos such as those used to train StyleGAN to be close. For normal user content it’s not as clear. I took one of my own photos, cropped and tried to eyeball the exact right coordinates. You can see in the image below I got really close, but I’m ever so slightly off. More importantly the dimensions of my face aren’t quite the same as the StyleGAN2 faces. I have overlayed the mean of the eyes from the GAN photos for reference.
 
@@ -67,6 +81,6 @@ Now let’s compute the distances for our original LinkedIn profile photos (and 
 
 So what happened with the first photo? We believe it is likely to be a GAN but somehow the distance is 130? If you look closely at the image you can see the lower left and upper right contain a diagonal black line. It appears someone attempted to rotate the image, potentially to evade simple detection mechanisms like this. Rotating the image 7 degrees gets the score back under 12.
 
-### Conclusion
+## Conclusion
 
 Using StyleGAN2 alignment artifacts can be an effective way to detect the use of unmodified images. These images appear to be used in LinkedIn profiles and other social media for deceptive purposes. This detection method is not resilient to image modifications and does not apply to non-aligned models like StyleGAN3. Nonetheless this approach has been effective in quickly triaging GAN images and making it easier to hunt for potentially fake Linkedin profiles.

@@ -19,7 +19,7 @@ The feed at <https://medium.com/feed/@mrichard91> returned ten full-text article
 | 2022-02-10 | LinkedIn GAN Network Analysis |
 | 2020-06-07 | How accurate are IHME models in Sweden? |
 
-Text was converted from feed HTML to Markdown. The RSS tracking pixel was removed. Article images were downloaded into `public/media/medium/`; originals and local paths are recorded in `medium-import.json`. Each post links to its original Medium article. Original publication dates were retained. This verifies coverage against the README, not against a complete Medium account export; RSS feeds may omit older posts. If an account export contains more posts, they can be imported later.
+Text was converted from feed HTML to Markdown. The RSS tracking pixel was removed. Article images were downloaded into `public/media/medium/`; originals and local paths are recorded in `medium-import.json`. Each post links to its original Medium article. Original publication dates were retained. Heading levels were normalized beneath the page title. Medium’s bare preformatted blocks were converted to fenced Markdown; all seven imported code blocks were checked against the original feed text. This verifies coverage against the README, not against a complete Medium account export; RSS feeds may omit older posts. If an account export contains more posts, they can be imported later.
 
 ## Selected on_analysis pieces
 

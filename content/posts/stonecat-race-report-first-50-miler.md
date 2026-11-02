@@ -1,12 +1,13 @@
 ---
-title: "Stonecat Race Report — First 50 miler"
-date: "2023-04-24"
-description: "Notes from a first 50-mile race at Stonecat."
+title: Stonecat Race Report — First 50 miler
+date: '2023-04-24'
+description: Notes from a first 50-mile race at Stonecat.
 category: running
-tags: ["running"]
-source: "https://medium.com/@mrichard91/stonecat-race-report-first-50-miler-60952598a2d3"
+tags:
+  - running
+source: >-
+  https://medium.com/@mrichard91/stonecat-race-report-first-50-miler-60952598a2d3
 ---
-
 (Reprinted from Facebook November 4, 2018)
 
 Made it through my first [50 miler](https://www.strava.com/activities/1944173258?share_sig=1B55674A1541331492&utm_medium=social&utm_source=ios_share)! It was quite an adventure.

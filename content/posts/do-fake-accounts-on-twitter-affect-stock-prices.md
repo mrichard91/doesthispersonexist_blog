@@ -1,12 +1,15 @@
 ---
-title: "Do fake accounts on twitter affect stock prices?"
-date: "2022-11-12"
-description: "An experiment in fake accounts, market signals, and the difficulty of drawing a useful conclusion."
+title: Do fake accounts on twitter affect stock prices?
+date: '2022-11-12'
+description: >-
+  An experiment in fake accounts, market signals, and the difficulty of drawing
+  a useful conclusion.
 category: analysis
-tags: ["analysis"]
-source: "https://medium.com/@mrichard91/do-fake-accounts-on-twitter-affect-stock-prices-3ca440e562bd"
+tags:
+  - analysis
+source: >-
+  https://medium.com/@mrichard91/do-fake-accounts-on-twitter-affect-stock-prices-3ca440e562bd
 ---
-
 ![](/media/medium/7b4dbfa244e96d36.png)
 
 Dall-e generated image for “stock chart with price falling because of a tweet”
@@ -20,7 +23,7 @@ tl;dr —
 -   the timeline of events does not suggest the same causation of tweet to price movement as historical examples;
 -   there is no evidence the stock movement was out of the ordinary, or that the tweet was likely to affect the price
 
-#### Timeline of Events
+## Timeline of Events
 
 Here’s a quick timeline:
 
@@ -38,7 +41,7 @@ _Nov 11 11:00am LLY falls to $346.47, a fall of about 6% since open_
 
 _Nov 11 4:00pm LLY closes at $352.30, a fall of about 4.5%_
 
-#### Full Context
+## Full Context
 
 On November 9, 2022 Twitter changed the meaning of the blue check mark on their site to have a dual meaning where previously it indicated verified account status. From the [help article](https://help.twitter.com/en/managing-your-account/about-twitter-verified-accounts) describing these changes —
 
@@ -56,14 +59,14 @@ The following day Eli Lily stock (ticker: LLY) dropped over 4%. The hot takes fr
 
 ![](/media/medium/56445dee857a82d4.png)
 
-#### Analytical Questions
+## Analytical Questions
 
 To get to the question at hand — did this impersonating tweet cause the Eli Lily stock LLY to drop? Or are there other reasonable explanations? Let’s consider two questions —
 
 1.  Is the change in LLY stock unexpected or otherwise outside the bounds of historical trading activity?
 2.  Could market investors consider this new blue check mark account to be the official position of Eli Lily?
 
-#### LLY Stock
+## LLY Stock
 
 If we take a look at the ticker chart for LLY over the last 6 months we can see a pattern familiar to many stock traders — the price has sharp rises and sharp falls over time. Relevant to our discussion, the stock sometimes falls more than 3%, often after it has risen significantly. In the month leading up to the November 11th 4.4% drop LLY had gained close to 10%.
 
@@ -79,7 +82,7 @@ Daily Drops of > 3% in LLY 11/20–11/22
 
 Based on historical trading data my conclusion is that the drop on 11/11/2022 falls well within the historical performance of the stock given the surrounding circumstances. This is a common pattern in technology and pharmaceutical stocks — big run up, followed by profit taking declines.
 
-#### Authenticity of Information
+## Authenticity of Information
 
 The second question to ask is if investors could have reasonably believed this new account to be the official representation of Eli Lily and thus acted on the information.
 

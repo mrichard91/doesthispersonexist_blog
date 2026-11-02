@@ -1,12 +1,17 @@
 ---
-title: "Omnipotent adversary fallacy — should you give up your asymmetric advantages in cyber threat intel?"
-date: "2023-05-11"
-description: "What defenders give up when they assume an adversary can see and do everything."
+title: >-
+  Omnipotent adversary fallacy — should you give up your asymmetric advantages
+  in cyber threat intel?
+date: '2023-05-11'
+description: >-
+  What defenders give up when they assume an adversary can see and do
+  everything.
 category: security
-tags: ["threat-intelligence"]
-source: "https://medium.com/@mrichard91/omnipotent-adversary-fallacy-should-you-give-up-your-asymmetric-advantages-in-cyber-threat-intel-55cc9dbbab4"
+tags:
+  - threat-intelligence
+source: >-
+  https://medium.com/@mrichard91/omnipotent-adversary-fallacy-should-you-give-up-your-asymmetric-advantages-in-cyber-threat-intel-55cc9dbbab4
 ---
-
 ![](/media/medium/ca253036f148ffe0.jpg)
 
 I previously shared some [common cyber threat intelligence biases](https://medium.com/@mrichard91/common-cyber-threat-intel-biases-9d6f410f5829) I have seen across many teams and organizations. The fallacy of the omnipotent adversary cuts deep to the heart of why we do cyber threat intel (CTI) and what outcomes we hope to achieve. The primary goal of CTI is to generate asymmetric advantages for defenders to mitigate the natural advantage enjoyed by attackers. For defenders, this means balancing the availability of intelligence to protect as many assets as possible while keeping sources and methods hidden from adversaries.
@@ -15,7 +20,7 @@ This post tries to help inform the questions — is tweeting about infrastru
 
 _My bottom line — defenders create asymmetries by finding repeated signals and deploying that intelligence; revealing this information is necessary to protect others but comes at the cost of potential exposure, which negates some of the benefits. The security game is not changed by CTI; it is merely nudged to slight advantages based on how well the intelligence is managed._
 
-### Assumptions
+## Assumptions
 
 Here are a few assumptions to frame the problem:
 
@@ -30,7 +35,7 @@ Here are a few assumptions to frame the problem:
 
 Bottom line — defenders create asymmetries by finding repeated signals and deploying that intelligence; revealing this information is necessary to protect others but comes at the cost of potential exposure, which negates the benefit. The game is not changed by CTI; it is merely nudged to slight advantages based on how well the intelligence is managed.
 
-### Questions to ask when sharing
+## Questions to ask when sharing
 
 One of the critical tenets of CTI is that sharing is caring. Creating and sharing intelligence about adversaries allows other organizations to protect themselves and limit adversaries' success across an industry or geography. This is a delicate balance and should thoughtfully further your organization, community, industry, and national goals in mitigating cyber adversaries.
 
@@ -39,7 +44,7 @@ One of the critical tenets of CTI is that sharing is caring. Creating and sharin
 3.  Is it possible to tier the information so that some portions can be shared with a more limited audience and others can be shared broadly to raise awareness? How can we minimize the adversary knowledge gain with the public portion while making it useful? Citation — tear lines, many Mandiant reports.
 4.  Does disclosure promote a larger strategic goal you want the adversary to hear? For example, do we want to include so much detail that it will cause an adversary to rethink operations after the revelations? Citations — APT1 report, Intrusion Truth.
 
-### **Example from the past — 2009 JBIG2 vulnerability**
+## **Example from the past — 2009 JBIG2 vulnerability**
 
 Here is a case study on disclosure that speaks to the tradeoffs of different levels of disclosure and how that can influence adversary behavior. This example looks at a zero-day exploit in Adobe Readers used by various adversaries against a range of targets, including the Defense Industrial Base (DIB), activists, and other unknown targets.
 
@@ -53,7 +58,7 @@ What is the takeaway? Initially, sharing the details in small groups helped prot
 
 You can see the talk given at Defcon by Steven Adair, including some of my slides, here — [https://www.youtube.com/watch?v=Kl4e7RCCj-w](https://www.youtube.com/watch?v=Kl4e7RCCj-w)
 
-### Example — Intrusion Truth
+## Example — Intrusion Truth
 
 Since 2017 an unidentified group named Intrusion Truth has been [publishing blog posts](https://intrusiontruth.wordpress.com/) and tweeting details about Chinese Ministry of State Security (MSS) cyber operations. The published content includes attributing individuals, motivations, and espionage targets. The content demonstrates a deep knowledge of adversary operations usually reserved only for well-resourced counterintelligence operations.
 

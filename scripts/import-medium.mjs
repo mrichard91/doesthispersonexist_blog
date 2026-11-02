@@ -9,7 +9,7 @@ const items = JSON.parse(await readFile(input, 'utf8'));
 const td = new TurndownService({ headingStyle:'atx', codeBlockStyle:'fenced', bulletListMarker:'-' });
 td.addRule('figure', { filter:'figure', replacement: content => `\n\n${content}\n\n` });
 const summaries = {
-  'the-mistaken-powdesk-malware': 'An imagined malware report, a real reminder to check sources, and the hazards of trusting a convincing story.',
+  'the-mistaken-powdesk-malware': 'How legitimate software was mistaken for malware, and how that attribution spread through threat intelligence.',
   'omnipotent-adversary-fallacy-should-you-give-up-your-asymmetric-advantages-in-cyber-threat-intel': 'What defenders give up when they assume an adversary can see and do everything.',
   'common-cyber-threat-intel-biases': 'Recognizing the habits and assumptions that can quietly distort an intelligence assessment.',
   'the-life-lessons-of-faceplanting': 'A lesson from the trail, learned the hard way.',
@@ -22,7 +22,8 @@ const summaries = {
 };
 await mkdir('public/media/medium', {recursive:true});
 await mkdir('content/posts', {recursive:true});
-const report = [];
+let report = [];
+try { report = JSON.parse(await readFile('docs/medium-import.json', 'utf8')); } catch (error) { if (error.code !== 'ENOENT') throw error; }
 for (const item of items) {
   const url = new URL(item.link); url.search = '';
   const slug = url.pathname.split('/').pop().replace(/-[a-f0-9]{10,14}$/, '');
@@ -42,6 +43,13 @@ for (const item of items) {
     await writeFile(`public${local}`,Buffer.from(await response.arrayBuffer()));
     html=html.replaceAll(src,local).replaceAll(src.replaceAll('&','&amp;'),local);
     images.push({source:src,local});
+  }
+  // Medium uses bare <pre> with <br> separators; Turndown expects <pre><code>.
+  html=html.replace(/<pre>([\s\S]*?)<\/pre>/gi, (_match, code) => `<pre><code>${code.replace(/<br\s*\/?>/gi, '\n')}</code></pre>`);
+  const headingLevels = [...html.matchAll(/<h([1-6])\b/gi)].map(m => Number(m[1]));
+  if (headingLevels.length) {
+    const shift = 2 - Math.min(...headingLevels);
+    html = html.replace(/<(\/?)h([1-6])(\b[^>]*)>/gi, (_m, close, level, attrs) => `<${close}h${Math.min(6, Number(level) + shift)}${attrs}>`);
   }
   let body=td.turndown(html).trim();
   const first=body.split('\n')[0];

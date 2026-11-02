@@ -1,17 +1,19 @@
 ---
-title: "Common Cyber Threat Intel Biases"
-date: "2023-05-08"
-description: "Recognizing the habits and assumptions that can quietly distort an intelligence assessment."
+title: Common Cyber Threat Intel Biases
+date: '2023-05-08'
+description: >-
+  Recognizing the habits and assumptions that can quietly distort an
+  intelligence assessment.
 category: security
-tags: ["threat-intelligence"]
-source: "https://medium.com/@mrichard91/common-cyber-threat-intel-biases-9d6f410f5829"
+tags:
+  - threat-intelligence
+source: 'https://medium.com/@mrichard91/common-cyber-threat-intel-biases-9d6f410f5829'
 ---
-
 I’ve been working in and around cyber threat intelligence for about 25 years, and over that time, I’ve found myself saying some phrases repeatedly. I often try to convey biases, blind spots, and systematic weaknesses in how teams evaluate and write about threat intelligence. Each phrase could use a whole post, so I’ll summarize each here. Feel free to steal anything useful and ignore what isn’t.
 
 ![](/media/medium/65fc311e7e698fa7.png)
 
-#### Analytical Biases
+## Analytical Biases
 
 **Hindsight is 50/50.** Not a typo — we often look into the past where we have a lot of data and think we have 20/20 vision, but the truth is the past is often hazy, and we’re telling a story about the past rather than faithfully recalling it. Rarely do we see the past with the clarity that we believe.
 
