@@ -1,6 +1,6 @@
 # blog.doesthispersonexist.com
 
-Matt Richard’s static blog. Markdown in Git, generated HTML on Cloudflare Pages. No server code, database, analytics, external fonts, or browser requests to Medium. The optional browser JavaScript handles search and the light/dark theme; all posts and category pages work without it.
+Matt Richard’s static blog. Markdown in Git, generated HTML on Cloudflare Pages. No server code, database, external fonts, or browser requests to Medium. Cloudflare Pages adds its cookie-free Web Analytics beacon. The site’s own browser JavaScript handles search and the light/dark theme; all posts and category pages work without it.
 
 ## Write and publish
 
@@ -60,6 +60,12 @@ npm run check
 - Custom domain: <https://blog.doesthispersonexist.com>
 
 Git integration handles deployment without a Cloudflare API token in GitHub. Cloudflare serves only static assets; there are no Pages Functions or Workers scripts in this project. A top-level `404.html` preserves proper missing-page behavior instead of an SPA fallback. The build also emits redirects from recovered Mulling Security dated paths to their current URLs on this blog domain.
+
+## Traffic statistics
+
+Cloudflare Web Analytics tracks visits, page views, referring sites, popular posts, and trends over time. Open [the analytics dashboard](https://dash.cloudflare.com/656a018a3eb026f03468c9146f110e0a/web-analytics), select `doesthispersonexist.com`, and filter **Host** to `blog.doesthispersonexist.com`.
+
+The dashboard retains a rolling six months of data. See [docs/analytics.md](docs/analytics.md) for setup, metric definitions, and limitations.
 
 ## Content migration
 
