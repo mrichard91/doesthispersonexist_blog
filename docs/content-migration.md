@@ -34,15 +34,53 @@ Two additional pieces were selected from the public repository, without copying 
 
 Source repository: <https://github.com/mrichard91/on_analysis>, inspected at commit `051e3db8bbfe459e178ed299342c5051b0f0bf2e`. Body text was preserved, with the duplicated title and author/date line moved into post metadata. Titles, dates, and source links remain visible. The remaining material stays in the original repository. Short outlines, course notes, PDF collections, and newer long-form malware analyses were not automatically republished. Two Medium mirrors also overlap with on_analysis; they appear only once in this blog.
 
-## Mulling Security — recovery pending
+## Mulling Security — recovered from the NAS backup
 
-Original domain confirmed by the author: `mullingsecurity.com`.
+Recovered November 2, 2026 from `opensecnet/home/matt/websites.tar.gz` on the author’s NAS. Only the `virtual/mullingsecurity/` portion was extracted for migration. Raw backup files stay outside this public repository.
 
-No original posts have yet been recovered. On November 2, 2026, the Wayback CDX query timed out and Internet Archive availability requests returned HTTP 429. Search found a historical reference to Matt Richard of Mullingsecurity.com in [The Life and Times of Ddabx.dll (2006)](https://mnin.org/write/2006_ddabx_lifetimes.pdf), but that is a third-party paper, not a copy of the blog. It has not been republished here.
+The archive contains **23 published posts**, dated **November 30, 2005 through March 14, 2006**, plus the home page, monthly index pages, and an Atom feed. All 23 monthly-index entries are represented by recovered article pages. The 2007 server tree also has later year directories, but those directories contain no post files. The other large root-level backups checked did not yield additional Mulling Security files. This is the recovered set, not a claim that every post ever published has been found.
 
-Next recovery sources:
+For each post:
 
-1. A WordPress XML/WXR export, database SQL dump, or old server backup. Preserve the original before extracting anything. Look for `wp_posts`, `wp_postmeta`, and `wp-content/uploads`; import only actual published posts, not users, passwords, comments, or server configuration.
-2. Wayback snapshots for `mullingsecurity.com` and `www.mullingsecurity.com`, including feed and individual post URLs, when the archive is reachable.
+- The visible Blogger date header supplies the publication date; file and archive modification times are ignored.
+- The saved Atom feed independently confirms nine dates and supplies their original `issued` timestamps, including timezone offsets. These are preserved as `publishedAt` and used in RSS and article publication metadata. Atom `created` and `modified` values are not substituted for the publication date.
+- Only `.post-body` is converted to Markdown. Comments, navigation, profile data, Blogger controls, scripts, and other server contents are excluded.
+- Article-body text was compared against the recovered HTML. It matches after allowing for whitespace and rendered list numbering. Code and log blockquotes are rendered as fenced code, with the original text preserved.
+- Explicit links to recovered posts are mapped to the new local pages. Original dated paths redirect to their new post URLs on the blog domain. Other historical links remain as written; their destinations were not downloaded or executed.
+- An archive note identifies the historical source. No article images were referenced in these 23 bodies.
 
-Recovered posts should retain their original dates, source/snapshot URL, and an archive note explaining the historical context. Put them in the `archive` category (with security tags as appropriate). Preserve image captions and technical examples. Do not invent missing text or infer publication dates from download timestamps. Check recovered posts locally before pushing them to the public repo.
+`mullingsecurity-import.json` records titles, dates, original paths, timestamps where available, and SHA-256 provenance hashes. Build checks protect the original dates, timestamp values, source links, archive context, and old permalink redirects.
+
+The repeatable importer runs only during maintenance, against an extracted blog directory:
+
+```sh
+node scripts/import-mullingsecurity.mjs /path/to/extracted/mullingsecurity
+```
+
+It skips existing posts to preserve subsequent edits. The static build never accesses the NAS or the original site.
+
+| Original publication date | Post |
+| --- | --- |
+| 2005-11-30 | Virtualizing buffer overflows |
+| 2005-12-01 | New Gmail Feature: False Security |
+| 2005-12-01 | Security using virtualization |
+| 2005-12-02 | Job Benefits: Identity Theft Assistance |
+| 2005-12-05 | Update on Virtualizing Overflows |
+| 2005-12-07 | Resources for VMM Based Security |
+| 2005-12-12 | PHP Email Injection |
+| 2005-12-13 | Vmware presentation on security |
+| 2005-12-15 | Opening the Door to Security |
+| 2005-12-19 | Even the experts get hacked |
+| 2005-12-28 | New Java exploit site in the Ukraine |
+| 2006-01-03 | Help Wanted: Identify these security nuggets |
+| 2006-01-03 | Howto: Getting Remote Access to Windows Behind a Firewall |
+| 2006-01-06 | Moving Browsing to the Edge |
+| 2006-01-13 | More Information on Java Exploit |
+| 2006-01-13 | Old Java Bug exploited from Ukraine |
+| 2006-01-23 | Paper: Anatomy of a Phish III |
+| 2006-01-23 | Snort sigs for latest Java Malware |
+| 2006-01-26 | Update on ddabx.dll |
+| 2006-02-06 | You Are the Weakest Link! |
+| 2006-02-10 | Cisco Botnets? |
+| 2006-02-15 | PHP Email Injection - Step by Step Part 1 |
+| 2006-03-14 | Captchas to defeat SSH brute force attacks |

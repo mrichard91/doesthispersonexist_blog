@@ -10,10 +10,13 @@
     "new": "node scripts/new-post.mjs",
     "import:medium": "node scripts/import-medium.mjs"
   },
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
     "gray-matter": "^4.0.3",
     "markdown-it": "^14.1.0",
-    "turndown": "^7.2.0"
+    "turndown": "^7.2.0",
+    "@mixmark-io/domino": "^2.2.0"
   }
 }

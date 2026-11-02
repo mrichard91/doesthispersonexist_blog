@@ -59,11 +59,11 @@ npm run check
 - Node version: `22` (also specified in `.nvmrc`)
 - Custom domain: <https://blog.doesthispersonexist.com>
 
-Git integration handles deployment without a Cloudflare API token in GitHub. Cloudflare serves only static assets; there are no Pages Functions or Workers scripts in this project. A top-level `404.html` preserves proper missing-page behavior instead of an SPA fallback.
+Git integration handles deployment without a Cloudflare API token in GitHub. Cloudflare serves only static assets; there are no Pages Functions or Workers scripts in this project. A top-level `404.html` preserves proper missing-page behavior instead of an SPA fallback. The build also emits redirects from recovered Mulling Security dated paths to their current URLs on this blog domain.
 
 ## Content migration
 
-See [docs/content-migration.md](docs/content-migration.md) for the imported articles, provenance, and Mulling Security recovery status. The article text is preserved; new short descriptions, category labels, and tags are editorial metadata. Medium imports retain the original publication date and a link to the original. `docs/medium-import.json` records original image URLs and their local copies.
+See [docs/content-migration.md](docs/content-migration.md) for the imported articles, provenance, and Mulling Security recovery status. The article text is preserved; short descriptions, category labels, and tags are editorial metadata. The Archive category now includes 23 recovered Mulling Security posts from 2005–2006, with original dates and an explicit archive note. Original Atom publication timestamps are retained where available; backup file timestamps are never used as publication dates. Medium imports retain the original publication date and a link to the original. `docs/medium-import.json` records original image URLs and their local copies; `docs/mullingsecurity-import.json` records the recovered archive’s date evidence and provenance hashes.
 
 The migration script accepts a JSON array of `{ title, link, date, html }` extracted from your Medium RSS feed. It is a one-time maintenance utility, separate from the site build:
 
