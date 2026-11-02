@@ -1,6 +1,7 @@
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import matter from 'gray-matter';
 async function walk(dir){return(await Promise.all((await readdir(dir,{withFileTypes:true})).map(d=>d.isDirectory()?walk(path.join(dir,d.name)):path.join(dir,d.name)))).flat();}
 const files=await walk('dist');
 assert(files.includes('dist/404.html'),'Missing real 404 page');
@@ -23,4 +24,14 @@ for(const file of ids.keys()) {
   }
 }
 assert((await readFile('dist/feed.xml','utf8')).includes('<rss version="2.0"'),'Missing RSS');
+// Migration dates are source evidence, independent of file or deployment timestamps.
+for (const record of JSON.parse(await readFile('docs/medium-import.json', 'utf8'))) {
+  const { data } = matter(await readFile(`content/posts/${record.slug}.md`, 'utf8'));
+  const originalDate = record.originalDate ?? record.date;
+  assert.equal(data.date, originalDate, `Original publication date changed: ${record.slug}`);
+  if (record.originalDate) assert.equal(data.sourceDate, record.date, `Medium republication date changed: ${record.slug}`);
+  const html = await readFile(`dist/posts/${record.slug}/index.html`, 'utf8');
+  assert(html.includes(`<time datetime="${originalDate}">`), `Rendered publication date changed: ${record.slug}`);
+}
 console.log(`Checked ${ids.size} HTML pages and ${links} internal links/assets. No server functions or remote article images.`);
+console.log('Imported publication dates match their recorded source dates.');

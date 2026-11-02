@@ -28,6 +28,8 @@ Write in Markdown.
 
 Categories: `security`, `analysis`, `projects`, `running`, `archive`. Add or rename them in `site.config.mjs`. Tags use lowercase words with hyphens. Filenames become permanent URLs: `content/posts/my-post.md` → `/posts/my-post/`.
 
+`date` means the earliest verified original publication date. It drives the visible date, chronological order, RSS, and article publication metadata. Keep it unchanged when editing or importing a post; builds never replace it with a file, commit, import, or deployment date. For a later republication, `sourceDate` can separately record the linked source’s date. For example, Stonecat was originally posted November 4, 2018, then republished on Medium April 24, 2023. If an original date cannot be verified, resolve it before publication rather than guessing.
+
 Add images to `public/media/` and link them as `![Meaningful description](/media/example.png)`. The entire `public/` directory is copied to the output.
 
 **Drafts in a public GitHub repo are still public source files.** `draft: true` only excludes a post from the generated website, including its route, indexes, feed, and sitemap. Keep genuinely private writing outside the repository. `content/drafts/` is never read by the builder.

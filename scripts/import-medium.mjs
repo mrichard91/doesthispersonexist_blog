@@ -20,6 +20,8 @@ const summaries = {
   'linkedin-gan-network-analysis': 'Following connections through a network of likely inauthentic LinkedIn profiles.',
   'how-accurate-are-ihme-models-in-sweden': 'Examining Sweden’s COVID-19 data and the accuracy of early IHME projections.',
 };
+// Verified from the author's original-publication note in the article body.
+const originalDates = { 'stonecat-race-report-first-50-miler': '2018-11-04' };
 await mkdir('public/media/medium', {recursive:true});
 await mkdir('content/posts', {recursive:true});
 let report = [];
@@ -60,9 +62,10 @@ for (const item of items) {
   const tags=running?['running']:analysis?['analysis']:/gan|linkedin/.test(slug)?['threat-intelligence','synthetic-identities']:/yara/.test(slug)?['threat-intelligence','yara']:['threat-intelligence'];
   const description=summaries[slug];
   if(!description) throw new Error(`Add a description for ${slug}`);
-  const front=['---',`title: ${JSON.stringify(item.title)}`,`date: ${JSON.stringify(item.date)}`,`description: ${JSON.stringify(description)}`,`category: ${category}`,`tags: ${JSON.stringify(tags)}`,`source: ${JSON.stringify(url.href)}`,'---',''];
+  const originalDate = originalDates[slug] ?? item.date;
+  const front=['---',`title: ${JSON.stringify(item.title)}`,`date: ${JSON.stringify(originalDate)}`,...(originalDate !== item.date ? [`sourceDate: ${JSON.stringify(item.date)}`] : []),`description: ${JSON.stringify(description)}`,`category: ${category}`,`tags: ${JSON.stringify(tags)}`,`source: ${JSON.stringify(url.href)}`,'---',''];
   await writeFile(filename,front.join('\n')+'\n'+body+'\n');
-  report.push({slug,title:item.title,date:item.date,source:url.href,images});
+  report.push({slug,title:item.title,date:item.date,...(originalDate !== item.date ? {originalDate} : {}),source:url.href,images});
   console.log(`Imported ${slug} (${images.length} images)`);
 }
 await writeFile('docs/medium-import.json',JSON.stringify(report,null,2)+'\n');

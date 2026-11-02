@@ -1,6 +1,7 @@
 ---
 title: Stonecat Race Report — First 50 miler
-date: '2023-04-24'
+date: '2018-11-04'
+sourceDate: '2023-04-24'
 description: Notes from a first 50-mile race at Stonecat.
 category: running
 tags:

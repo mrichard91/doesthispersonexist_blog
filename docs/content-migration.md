@@ -6,7 +6,7 @@ Initial import: November 2, 2026.
 
 The feed at <https://medium.com/feed/@mrichard91> returned ten full-text articles, matching all ten Medium article links listed in the public `on_analysis` README at the time of import:
 
-| Date | Title |
+| Medium publication date | Title |
 | --- | --- |
 | 2023-12-22 | The Mistaken PowDesk Threat Intel |
 | 2023-05-11 | Omnipotent adversary fallacy — should you give up your asymmetric advantages in cyber threat intel? |
@@ -18,6 +18,8 @@ The feed at <https://medium.com/feed/@mrichard91> returned ten full-text article
 | 2022-02-20 | Pragmatic Detection of GAN Profiles |
 | 2022-02-10 | LinkedIn GAN Network Analysis |
 | 2020-06-07 | How accurate are IHME models in Sweden? |
+
+Stonecat explicitly states “Reprinted from Facebook November 4, 2018.” Its blog publication date is therefore **2018-11-04**; `sourceDate: 2023-04-24` separately preserves the Medium republication date. The homepage, article header, sorting, RSS, and article metadata all use the original 2018 date. The import manifest records both dates, and the build checks guard against accidentally changing imported publication dates.
 
 Text was converted from feed HTML to Markdown. The RSS tracking pixel was removed. Article images were downloaded into `public/media/medium/`; originals and local paths are recorded in `medium-import.json`. Each post links to its original Medium article. Original publication dates were retained. Heading levels were normalized beneath the page title. Medium’s bare preformatted blocks were converted to fenced Markdown; all seven imported code blocks were checked against the original feed text. This verifies coverage against the README, not against a complete Medium account export; RSS feeds may omit older posts. If an account export contains more posts, they can be imported later.
 
