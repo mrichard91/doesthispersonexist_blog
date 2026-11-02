@@ -2,8 +2,8 @@
 title: YARA hunting in ancient civilizations
 date: '2023-04-26'
 description: >-
-  An ancient city, a suspicious shipment, and a different way to think about
-  detection.
+  Early YARA detection work, sharing analyst knowledge, and why a readable rule
+  language mattered more than technical superiority.
 category: security
 tags:
   - threat-intelligence

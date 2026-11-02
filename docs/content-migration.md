@@ -23,6 +23,16 @@ Stonecat explicitly states “Reprinted from Facebook November 4, 2018.” Its b
 
 Text was converted from feed HTML to Markdown. The RSS tracking pixel was removed. Article images were downloaded into `public/media/medium/`; originals and local paths are recorded in `medium-import.json`. Each post links to its original Medium article. Original publication dates were retained. Heading levels were normalized beneath the page title. Medium’s bare preformatted blocks were converted to fenced Markdown; all seven imported code blocks were checked against the original feed text. This verifies coverage against the README, not against a complete Medium account export; RSS feeds may omit older posts. If an account export contains more posts, they can be imported later.
 
+## LinkedIn
+
+The author’s [LinkedIn share](https://www.linkedin.com/posts/actual-mjr_yara-hunting-in-ancient-civilizations-share-7057039088620597248-vyFw/) introduces the YARA article already mirrored from Medium. Its full commentary is preserved as a separate companion note, “YARA hunting in ancient civilizations — LinkedIn note,” with a link to the full article. The full article’s original date is unchanged.
+
+LinkedIn’s public page supplies the original `datePublished` value **2023-04-26T17:13:52.312Z**. The visible author commentary was checked against the page’s `SocialMediaPosting.articleBody` and matched exactly. Only the author’s post is mirrored; comments, reactions, and the linked article’s preview card are excluded. A clearly separated link to the local full article is added after the mirrored text.
+
+`linkedin-import.json` records the supplied share URL, LinkedIn’s canonical activity URL, original date and timestamp, and a SHA-256 hash of the mirrored commentary. Build checks verify the text, date, source attribution, and local article link. Tracking parameters are omitted from the source link.
+
+The existing full article’s short index description was also corrected to describe its actual subject: early YARA detection work, sharing analyst knowledge, and the value of a readable rule language. Its article text remains unchanged.
+
 ## Selected on_analysis pieces
 
 Two additional pieces were selected from the public repository, without copying unpublished local files:

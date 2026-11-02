@@ -13,7 +13,7 @@ const summaries = {
   'omnipotent-adversary-fallacy-should-you-give-up-your-asymmetric-advantages-in-cyber-threat-intel': 'What defenders give up when they assume an adversary can see and do everything.',
   'common-cyber-threat-intel-biases': 'Recognizing the habits and assumptions that can quietly distort an intelligence assessment.',
   'the-life-lessons-of-faceplanting': 'A lesson from the trail, learned the hard way.',
-  'yara-hunting-in-ancient-civilizations': 'An ancient city, a suspicious shipment, and a different way to think about detection.',
+  'yara-hunting-in-ancient-civilizations': 'Early YARA detection work, sharing analyst knowledge, and why a readable rule language mattered more than technical superiority.',
   'stonecat-race-report-first-50-miler': 'Notes from a first 50-mile race at Stonecat.',
   'do-fake-accounts-on-twitter-affect-stock-prices': 'An experiment in fake accounts, market signals, and the difficulty of drawing a useful conclusion.',
   'pragmatic-detection-of-gan-profiles': 'Practical techniques for identifying synthetic profile photos, with examples and limitations.',
