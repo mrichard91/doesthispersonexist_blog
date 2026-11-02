@@ -41,10 +41,13 @@ for (const record of JSON.parse(await readFile('docs/mullingsecurity-import.json
   assert.equal(data.date,record.date,`Archive date changed: ${record.slug}`);
   assert.equal(data.publishedAt,record.publishedAt,`Archive timestamp changed: ${record.slug}`);
   assert.equal(data.source,record.source,`Archive source changed: ${record.slug}`);
+  assert.equal(data.sourceName,'Mulling Security',`Previous blog attribution changed: ${record.slug}`);
   if (data.draft === true) continue;
   const html = await readFile(`dist/posts/${record.slug}/index.html`,'utf8');
   assert(html.includes(`<time datetime="${record.date}">`),`Wrong archive date: ${record.slug}`);
   assert(html.includes('aria-label="Archive context"'),`Missing historical context: ${record.slug}`);
+  assert(html.includes('my previous blog, <strong>Mulling Security</strong>'),`Missing previous blog attribution: ${record.slug}`);
+  assert(html.includes(`Original URL: <a href="${record.source}">${record.source}</a>`),`Original URL must be visible and linked: ${record.slug}`);
   assert(redirects.includes(`${record.originalPath} /posts/${record.slug}/ 301`),`Missing old permalink: ${record.slug}`);
 }
 console.log('Archive dates, original timestamps, context, and permalink redirects verified.');

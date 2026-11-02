@@ -47,7 +47,7 @@ For each post:
 - Only `.post-body` is converted to Markdown. Comments, navigation, profile data, Blogger controls, scripts, and other server contents are excluded.
 - Article-body text was compared against the recovered HTML. It matches after allowing for whitespace and rendered list numbering. Code and log blockquotes are rendered as fenced code, with the original text preserved.
 - Explicit links to recovered posts are mapped to the new local pages. Original dated paths redirect to their new post URLs on the blog domain. Other historical links remain as written; their destinations were not downloaded or executed.
-- An archive note identifies the historical source. No article images were referenced in these 23 bodies.
+- Each article explicitly identifies Mulling Security as the author’s previous blog and displays its full, linked original URL alongside the original publication date. Post listings also carry a “from Mulling Security” attribution linked to the collection. No article images were referenced in these 23 bodies.
 
 `mullingsecurity-import.json` records titles, dates, original paths, timestamps where available, and SHA-256 provenance hashes. Build checks protect the original dates, timestamp values, source links, archive context, and old permalink redirects.
 
