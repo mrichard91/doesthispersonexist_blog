@@ -8,3 +8,6 @@
 .archive-note{border-left:2px solid var(--accent);padding:8px 12px;margin:0 0 18px;color:var(--muted);font:12px/1.8 var(--mono)}
 
 .post-meta .origin-label{color:var(--muted)}.archive-note p{margin:0}.archive-note .original-url{margin-top:5px;overflow-wrap:anywhere}.archive-note a{color:var(--accent)}
+
+/* Keep project screenshots compact; the image links open the full-size files. */
+.prose img[src^="/media/personal-projects/"]{max-width:min(100%,440px);max-height:240px;width:auto;height:auto;object-fit:contain}
