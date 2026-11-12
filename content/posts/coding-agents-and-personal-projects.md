@@ -18,6 +18,8 @@ Some projects I’ve built recently:
 
 **isyeet.io, “I send you E2E text.”** A prototype text-only messaging platform based on libsignal, with iOS, macOS and CLI clients. It only accepts ASCII characters and keeps a minimal footprint, with a server hosted on Cloudflare to relay encrypted messages. The [ASCII messaging manifesto](https://isyeet.io/manifesto/) explains the idea.
 
+[![The isyeet manifesto: an ASCII cabin above “All I want is text.”](/media/personal-projects/isyeet-manifesto.jpg)](https://isyeet.io/manifesto/)
+
 **A full audit of my Synology NAS.** Turns out malware scanning can itself be a pretty potent potential backdoor. I wrote up the details in my [Synology Wedjat/DLID analysis](https://github.com/mrichard91/on_analysis/blob/main/cti/malware_analysis/synology-wedjat-dlid-analysis.md).
 
 **A [minimal macOS Keybase client](https://github.com/mrichard91/keybase-osx-native-minimalist).** A native, text-only interface using a reduced version of the official Keybase backend. The idea is to keep messaging while reducing the attack surface of running a browser engine to read text. No rich media, attachments or link previews.
