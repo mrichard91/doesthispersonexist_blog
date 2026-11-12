@@ -14,7 +14,7 @@ Some projects I’ve built recently:
 
 [![The iMac display sender’s menu bar controls](/media/personal-projects/imac-display.png)](/media/personal-projects/imac-display.png)
 
-**Custom firmware and a client for the JetKVM Mini.** I rewrote several parts in Rust for memory safety and removed the cloud update and login integrations so I can manage it locally. I also added the ability to relay my host YubiKey to the remote computer for passkey authentication, and attach a local directory as removable media on the remote device.
+**Custom firmware and a client for the [JetKVM Mini](https://jetkvm.com/products/jetkvm-mini).** I rewrote several parts in Rust for memory safety and removed the cloud update and login integrations so I can manage it locally. I also added the ability to relay my host YubiKey to the remote computer for passkey authentication, and attach a local directory as removable media on the remote device.
 
 **isyeet.io, “I send you E2E text.”** A prototype text-only messaging platform based on libsignal, with iOS, macOS and CLI clients. It only accepts ASCII characters and keeps a minimal footprint, with a server hosted on Cloudflare to relay encrypted messages. The [ASCII messaging manifesto](https://isyeet.io/manifesto/) explains the idea.
 
